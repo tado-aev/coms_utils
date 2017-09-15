@@ -37,4 +37,9 @@
     <!-- /dev/ttyACM1 mbed -->
     <include file="$(find gear_a_b_mbed)/launch/coms.launch" />
   </group>
+
+  <include file="$(find coms_odom)/launch/coms_odom_node.launch" >
+    <!-- <remap from="/imu" to="/vg440/imu/data" /> -->
+    <!-- <remap from="/encoder" to="/cnt723/encoder_count" /> -->
+  </include>
 </launch>
