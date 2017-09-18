@@ -43,7 +43,7 @@
   <!-- Odometry -->
   <group>
     <remap from="/imu" to="/vg440/imu/data" />
-    <remap from="/encoder" to="/cnt723/encoder_count" />
+    <remap from="/encoder" to="/cnt723/count" />
     <include file="$(find coms_odom)/launch/coms_odom_node.launch" />
   </group>
 </launch>
