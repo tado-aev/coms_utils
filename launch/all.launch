@@ -36,6 +36,8 @@
 
     <!-- /dev/ttyACM1 mbed -->
     <include file="$(find gear_a_b_mbed)/launch/coms.launch" />
+
+    <include file="$(find coms_commander)/launch/coms_commander_node.launch" />
   </group>
 
   <!-- Odometry -->
