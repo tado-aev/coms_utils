@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- /dev/ttyUSB0 IMU -->
+  <node pkg="xbow440" type="xbow440_node" name="vg440" >
+    <param name="port" value="/dev/ttyUSB0" />
+    <param name="baudrate" value="38400" />
+  </node>
+
+  <!-- /dev/ttyUSB2 CNT723 -->
+  <include file="$(find cnt723)/launch/cnt723_node.launch" />
+
+  <!-- Odometry -->
+  <group>
+    <remap from="/imu" to="/vg440/imu/data" />
+    <remap from="/encoder" to="/cnt723/count" />
+    <include file="$(find coms_odom)/launch/coms_odom_node.launch" />
+  </group>
+</launch>
