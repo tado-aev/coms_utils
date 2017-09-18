@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="autonomous" value="false" />.
+  <arg name="autonomous" value="$(optenv COMS_AUTONOMOUS_ENABLED true)" />.
 
   <!-- /dev/ttyUSB0 IMU -->
   <node pkg="xbow440" type="xbow440_node" name="vg440" >
