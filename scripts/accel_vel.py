@@ -12,8 +12,7 @@
 # License: MIT
 
 import rospy
-from coms_msgs.msg import ComsGAB
-from std_msgs.msg import UInt32
+from coms_msgs.msg import ComsGAB, ComsEncoder
 
 import signal
 import sys
@@ -31,14 +30,14 @@ class VelocityRecorder():
         self.prev_time = None
         self.prev_cnt = None
         self.enc_sub = rospy.Subscriber('encoder',
-                                        UInt32,
+                                        ComsEncoder,
                                         self.encoder_callback)
 
     def encoder_callback(self, data):
-        t = rospy.Time.now()
+        t = data.header.stamp
         if not self.initial_t and self.is_writing():
             self.initial_t = t
-        cnt = data.data
+        cnt = data.count
         if not self.prev_cnt:
             self.prev_time = t
             self.prev_cnt = cnt
