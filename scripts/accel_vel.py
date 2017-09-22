@@ -75,6 +75,7 @@ def apply_brake():
     print('Stopping')
     recorder.stop_writing()
     msg = ComsGAB()
+    msg.program_mode = True
     msg.accel = 0
     msg.brake = 100
     msg.gear = 'd'
