@@ -9,18 +9,18 @@
   <!-- /dev/ttyUSB2 CNT723 -->
   <include file="$(find cnt723)/launch/cnt723_node.launch" />
 
-  <!-- /dev/ttyUSB3 Steering actuator -->
-  <include file="$(find coms_steering)/launch/coms_steering_node.launch" />
-
-  <!-- /dev/ttyACM1 mbed -->
-  <include file="$(find gear_a_b_mbed)/launch/coms.launch" />
-
-  <include file="$(find coms_commander)/launch/coms_commander_node.launch" />
-
   <!-- Odometry -->
   <group>
     <remap from="/imu" to="/vg440/imu/data" />
     <remap from="/encoder" to="/cnt723/count" />
     <include file="$(find coms_odom)/launch/coms_odom_node.launch" />
   </group>
+
+  <!-- /dev/ttyACM1 mbed -->
+  <include file="$(find gear_a_b_mbed)/launch/coms.launch" />
+
+  <!-- /dev/ttyUSB3 Steering actuator -->
+  <include file="$(find coms_steering)/launch/coms_steering_node.launch" />
+
+  <include file="$(find coms_commander)/launch/coms_commander_node.launch" />
 </launch>
