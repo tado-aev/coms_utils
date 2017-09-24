@@ -1,14 +1,12 @@
 <?xml version="1.0"?>
 <launch>
-  <param name="use_sim_time" value="true" />
-
   <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="velodyne_to_scan" >
     <remap from="cloud_in" to="velodyne_points" />
 
-    <param name="min_height" value="2.5" />
-    <param name="max_height" value="3.5" />
-    <!-- <param name="min_height" value="&#45;0.25" /> -->
-    <!-- <param name="max_height" value="0.25" /> -->
+    <!-- <param name="min_height" value="2.5" /> -->
+    <!-- <param name="max_height" value="3.5" /> -->
+    <param name="min_height" value="-0.25" />
+    <param name="max_height" value="0.25" />
     <param name="range_min"  value="1" />
     <param name="range_max"  value="150" />
     <param name="angle_min"  value="-3.14159" />
@@ -16,9 +14,11 @@
   </node>
 
   <node pkg="amcl" type="amcl" name="slam" output="screen" >
-    <param name="update_min_d"    value="0.2" />
-    <param name="update_min_a"    value="0.174533" />
     <param name="odom_model_type" value="diff-corrected" />
+    <param name="odom_alpha1"     value="0.005" />
+    <param name="odom_alpha2"     value="0.005" />
+    <param name="odom_alpha3"     value="0.010" />
+    <param name="odom_alpha4"     value="0.005" />
   </node>
 
   <node pkg="rviz" type="rviz" name="rviz" />
