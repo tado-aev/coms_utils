@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="move_base" type="move_base" name="move_base" >
+    <rosparam command="load" file="$(env COMS_CONFIGS_DIR)/planner.yaml" />
+    <include file="$(find husky_navigation)/launch/move_base.launch" />
+  </node>
+</launch>
