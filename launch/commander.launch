@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- /dev/ttyACM1 mbed -->
+  <include file="$(find gear_a_b_mbed)/launch/coms.launch" />
+
+  <!-- /dev/ttyUSB3 Steering actuator -->
+  <include file="$(find coms_steering)/launch/coms_steering_node.launch" />
+
+  <include file="$(find coms_commander)/launch/coms_commander_node.launch" />
+</launch>
