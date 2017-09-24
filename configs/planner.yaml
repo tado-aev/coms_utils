@@ -1,24 +1,24 @@
-move_base:
-    base_local_planner: 'teb_local_planner/TebLocalPlanner'
-    clearing_rotation_allowed: false
+base_local_planner: 'teb_local_planner/TebLocalPlanner'
+clearing_rotation_allowed: false
 
-    global_costmap:
-        footprint: [[1.2, 0.55], [1.2, -0.55], [-1.2, -0.55], [-1.2, 0.55]]
-    local_costmap:
-        footprint: [[1.2, 0.55], [1.2, -0.55], [-1.2, -0.55], [-1.2, 0.55]]
+global_costmap:
+    footprint: [[1.2, 0.55], [1.2, -0.55], [-1.2, -0.55], [-1.2, 0.55]]
+local_costmap:
+    footprint: [[1.2, 0.55], [1.2, -0.55], [-1.2, -0.55], [-1.2, 0.55]]
 
-    TebLocalPlannerROS:
-        max_vel_x: 3.0
-        max_vel_x_backwards: 0.0
-        max_vel_theta: 0.34906585
-        min_turning_radius: 5.0
-        wheelbase: 1.53
-        footprint_model:
-            type: 'polygon'
-            vertices: [[1.2, 0.55], [1.2, -0.55], [-1.2, -0.55], [-1.2, 0.55]]
-        weight_kinematics_forward_drive: 30
-        weight_kinematics_turning_radius: 10
-        weight_max_vel_x: 30
-        # Goal tolerance
-        xy_goal_tolerance: 1.0
-        yaw_goal_tolerance: 0.31416
+TebLocalPlannerROS:
+    max_vel_x: 3.0
+    max_vel_x_backwards: 0.1
+    max_vel_theta: 0.34906585
+    min_turning_radius: 5.0
+    wheelbase: 1.53
+    footprint_model:
+        type: 'polygon'
+        vertices: [[1.2, 0.55], [1.2, -0.55], [-1.2, -0.55], [-1.2, 0.55]]
+    penalty_epsilon: 0.0
+    weight_kinematics_forward_drive: 30
+    weight_kinematics_turning_radius: 10
+    weight_max_vel_x: 30
+    # Goal tolerance
+    xy_goal_tolerance: 1.0
+    yaw_goal_tolerance: 0.31416
