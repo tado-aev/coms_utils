@@ -7,6 +7,7 @@ import rospy
 from nav_msgs.msg import Odometry, Path
 from geometry_msgs.msg import PoseStamped
 
+import math
 import sys
 import threading
 
@@ -36,6 +37,15 @@ def save_points():
         p.header = latest_odom.header
         p.pose = latest_odom.pose.pose
         points.poses.append(p)
+
+        if len(points.poses) < 2:
+            continue
+
+        a = points.poses[-2].pose.position
+        b = points.poses[-1].pose.position
+        d = math.sqrt((a.x - b.x)**2 + (a.y - b.y)**2)
+        print('Recorded: {0}, {1}'.format(b.x, b.y))
+        print('Moved: {0}'.format(d))
 
 if __name__ == '__main__':
     t = threading.Thread(name='save_points', target=save_points)
