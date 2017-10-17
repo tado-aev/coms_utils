@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="autonomous" value="$(optenv COMS_AUTONOMOUS_ENABLED true)" />.
+  <arg name="autonomous" value="$(optenv COMS_AUTONOMOUS_ENABLED false)" />.
 
   <!-- /dev/ttyUSB0 IMU -->
   <node pkg="xbow440" type="xbow440_node" name="vg440" >
@@ -9,10 +9,7 @@
   </node>
 
   <!-- /dev/ttyUSB1 JAVAD -->
-  <node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="javad" ns="javad" >
-    <param name="port" value="/dev/ttyUSB1" />
-    <param name="baud" value="115200" />
-  </node>
+  <include file="$(find javad_delta)/launch/javad_delta_node.launch" ns="javad" />
 
   <!-- /dev/ttyUSB2 CNT723 -->
   <include file="$(find cnt723)/launch/cnt723_node.launch" />
@@ -29,16 +26,6 @@
   <!-- Ethernet port Velodyne -->
   <include file="$(find velodyne_pointcloud)/launch/32e_points.launch" />
   <node pkg="tf" type="static_transform_publisher" name="base_link_to_velodyne" args="0 0 0 -1.57079632675 0 0 base_link velodyne 10" />
-
-  <group if="$(arg autonomous)">
-    <!-- /dev/ttyACM1 mbed -->
-    <include file="$(find gear_a_b_mbed)/launch/coms.launch" />
-
-    <!-- /dev/ttyUSB3 Steering actuator -->
-    <include file="$(find coms_steering)/launch/coms_steering_node.launch" />
-
-    <include file="$(find coms_commander)/launch/coms_commander_node.launch" />
-  </group>
 
   <!-- Odometry -->
   <group>
