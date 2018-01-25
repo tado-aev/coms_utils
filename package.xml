@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <name>coms_utils</name>
+  <version>0.1.0</version>
+  <description>coms_utils</description>
+
+  <maintainer email="mizuno.naoki@rm.is.tohoku.ac.jp">Naoki Mizuno</maintainer>
+
+  <license>MIT</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>
