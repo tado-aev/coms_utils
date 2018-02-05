@@ -6,7 +6,9 @@
   <node pkg="xbow440" type="xbow440_node" name="vg440" >
     <param name="port" value="/dev/ttyUSB0" />
     <param name="baudrate" value="38400" />
+    <param name="frame_id" value="vg440" />
   </node>
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_vg440" args="-0.5 0 0.3 0 0 3.14159265358979 base_link vg440" />
 
   <!-- /dev/ttyUSB1 JAVAD -->
   <include file="$(find javad_delta)/launch/javad_delta_node.launch" ns="javad" />
